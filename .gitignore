@@ -1,0 +1,57 @@
+# -------- directories
+.DS_Store
+.env
+.mypy_cache
+infrastructure/node_modules/
+jspm_packages/
+src/libs
+**/node_modules
+__pycache__
+cdk.out
+assets
+genai-env
+.env-genai
+
+# -------- Unit test / coverage reports
+
+# -------- Compiled source
+*.dll
+*.exe
+*.o
+*.mod
+*.so
+*.py[cod]
+
+# -------- Packages
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# -------- Log & Binary Files
+*.log
+*.h5
+*.bson
+*.egg-info
+*.tfstate
+
+# -------- IDE Configs
+*.orig
+*.vcxproj
+*.vscode
+*.vfproj.*.user
+*.suo
+*.u2d
+*.htm
+*.html
+*-convert.htm
+*.sta
+
+# -------- CDK
+.cdk.staging
+cdk.out
+cdk-outputs.json
