@@ -1,0 +1,33 @@
+{
+  "name": "genai-sus-autoreport",
+  "version": "1.0.0",
+  "description": "![pipeline](https://gitlab.aws.dev//sustainability-collab/genai-sus-autoreport/badges/main/pipeline.svg)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@ssh.gitlab.aws.dev:sustainability-collab/genai-sus-autoreport.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@aws-amplify/auth": "^6.0.21",
+    "@aws-sdk/client-s3": "^3.523.0",
+    "@types/node": "^20.11.20",
+    "aws-amplify": "^6.0.21",
+    "aws-cdk": "^2.130.0",
+    "aws-cdk-lib": "^2.130.0",
+    "cdk-nag": "^2.28.67",
+    "constructs": "^10.3.0",
+    "i": "^0.3.7",
+    "license-report": "^6.5.0",
+    "npm": "^10.5.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3",
+    "uuid": "^9.0.1",
+    "yargs": "^17.7.2"
+  }
+}

@@ -1,0 +1,14 @@
+@url =
+@token =
+
+POST {{url}}/api_proxy
+Authorization: {{token}}
+content-type: application/json
+
+{
+    "question": "How does IFRS S1 help investors with sustainability reporting?",
+    "model": "anthropic.claude-v2",
+    "max_tokens": 900,
+    "temperature": 0.7
+}
+###
