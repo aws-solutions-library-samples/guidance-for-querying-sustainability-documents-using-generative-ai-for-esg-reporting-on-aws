@@ -19,6 +19,8 @@ This project is built and maintained by [Marco Masciola](https://www.linkedin.co
 
 ## Architeceture Diagram
 
+![arch-diagram](./assets/figs/arch-diagram.png "Guidance Architecture Diagram")
+
 ## AWS Services Used
 
 @todo: include
