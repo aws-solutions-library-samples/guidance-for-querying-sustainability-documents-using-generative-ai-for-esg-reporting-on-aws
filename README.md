@@ -43,8 +43,8 @@ $ git clone git@ssh.gitlab.aws.dev:sustainability-collab/genai-sus-autoreport.gi
 Set up python environment:
 
 ```bash
-$ python -m venv genai-env
-$ source genai-env/bin/activate
+$ python -m venv .genai-env
+$ source .genai-env/bin/activate
 $ pip install -r requirements.txt
 ```
 
