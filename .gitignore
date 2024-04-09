@@ -8,7 +8,7 @@ src/libs
 __pycache__
 cdk.out
 assets
-genai-env
+.genai-env
 .env-genai
 
 # -------- Compiled source
