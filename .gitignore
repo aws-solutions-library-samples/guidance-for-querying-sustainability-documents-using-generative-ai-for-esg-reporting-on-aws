@@ -2,17 +2,14 @@
 .DS_Store
 .env
 .mypy_cache
-infrastructure/node_modules/
 jspm_packages/
 src/libs
 **/node_modules
 __pycache__
 cdk.out
 assets
-genai-env
+.genai-env
 .env-genai
-
-# -------- Unit test / coverage reports
 
 # -------- Compiled source
 *.dll
