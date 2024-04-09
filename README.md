@@ -1,13 +1,5 @@
 # Guidance for Querying Sustainability Documents Using Generative AI for ESG Reporting on AWS
 
-![exmaple-deploy](./assets/figs/video.gif)
-
-[This Guidance demonstrates](https://aws.amazon.com/solutions/guidance/querying-sustainability-documents-using-generative-ai-for-esg-reporting-on-aws/) how to implement a Retrieval-Augmented Generation (RAG) process for your authoritative knowledge base, specifically addressing environmental, social, and governance (ESG) requirements. 
-It combines the capabilities of Amazon Kendra and a large language model (LLM) on Amazon Bedrock—a fully managed service offering a choice of high-performing foundation models.
-
-Designed to provide rapid insights from dense sustainability documents like corporate reports, regulatory filings, and standards, it streamlines navigation of diverse ESG information. 
-This allows you to rapidly analyze extensive text data, summarize key insights, and draw conclusions for your ESG reporting needs.
-
 **Table of Contents**
 
 - [Project Description](#project-description)
@@ -17,6 +9,14 @@ This allows you to rapidly analyze extensive text data, summarize key insights, 
   - [Build the Infrastructure](#build-the-infrastructure)
   - [Run the Service](#run-the-service)
 - [Cleanup](#cleaup)
+
+[This Guidance demonstrates](https://aws.amazon.com/solutions/guidance/querying-sustainability-documents-using-generative-ai-for-esg-reporting-on-aws/) how to implement a Retrieval-Augmented Generation (RAG) process for your authoritative knowledge base, specifically addressing environmental, social, and governance (ESG) requirements. 
+It combines the capabilities of Amazon Kendra and a large language model (LLM) on Amazon Bedrock—a fully managed service offering a choice of high-performing foundation models.
+
+Designed to provide rapid insights from dense sustainability documents like corporate reports, regulatory filings, and standards, it streamlines navigation of diverse ESG information. 
+This allows you to rapidly analyze extensive text data, summarize key insights, and draw conclusions for your ESG reporting needs.
+
+![example-deploy](./assets/figs/video.gif)
 
 This project is built and maintained by [Marco Masciola](https://www.linkedin.com/in/marcomasciola/) and [Sundeep Ramachandran](https://www.linkedin.com/in/rsundeep/).
 
