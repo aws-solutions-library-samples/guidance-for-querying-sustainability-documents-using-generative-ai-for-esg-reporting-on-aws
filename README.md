@@ -30,6 +30,7 @@ Designed to provide rapid insights from dense sustainability documents like corp
 
 ![arch-diagram](./assets/figs/arch-diagram.png "Guidance Architecture Diagram")
 
+
 # Getting Started
 
 ## Prerequisites
@@ -45,6 +46,7 @@ Set up python environment:
 ```bash
 $ python -m venv .genai-env
 $ source .genai-env/bin/activate
+
 $ pip install -r requirements.txt
 ```
 
@@ -82,6 +84,7 @@ But you can retrieve resource names by running this command:
 
 ```bash
 source resource.sh
+
 ```
 * `S3AssetBucketName`
 * `EndpointURL`
@@ -164,6 +167,7 @@ On line 9 you can ask a sustainability related question, such as:
 * How does IFRS S1 help investors with sustainability reporting?
 
 Then click on the "Send Request" text above line 4 to submit the query. 
+
 
 # Cleanup
 
