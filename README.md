@@ -1,6 +1,6 @@
-![pipeline](https://gitlab.aws.dev//sustainability-collab/genai-sus-autoreport/badges/main/pipeline.svg)
-
 # Guidance for Querying Sustainability Documents Using Generative AI for ESG Reporting on AWS
+
+![exmaple-deploy](./assets/figs/video.gif)
 
 [This Guidance demonstrates](https://aws.amazon.com/solutions/guidance/querying-sustainability-documents-using-generative-ai-for-esg-reporting-on-aws/) how to implement a Retrieval-Augmented Generation (RAG) process for your authoritative knowledge base, specifically addressing environmental, social, and governance (ESG) requirements. 
 It combines the capabilities of Amazon Kendra and a large language model (LLM) on Amazon Bedrock—a fully managed service offering a choice of high-performing foundation models.
@@ -81,7 +81,7 @@ Resource names are output during the `cdk deploy` step.
 But you can retrieve resource names by running this command:
 
 ```bash
-source resources.sh
+source resource.sh
 ```
 * `S3AssetBucketName`
 * `EndpointURL`
