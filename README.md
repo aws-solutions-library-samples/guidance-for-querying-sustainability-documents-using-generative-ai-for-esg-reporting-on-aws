@@ -1,12 +1,17 @@
 ![pipeline](https://gitlab.aws.dev//sustainability-collab/genai-sus-autoreport/badges/main/pipeline.svg)
 
-# Sustainability Q&A Service using Generative AI and AWS Bedrock
+# Guidance for Querying Sustainability Documents Using Generative AI for ESG Reporting on AWS
+
+[This Guidance demonstrates](https://aws.amazon.com/solutions/guidance/querying-sustainability-documents-using-generative-ai-for-esg-reporting-on-aws/) how to implement a Retrieval-Augmented Generation (RAG) process for your authoritative knowledge base, specifically addressing environmental, social, and governance (ESG) requirements. 
+It combines the capabilities of Amazon Kendra and a large language model (LLM) on Amazon Bedrock—a fully managed service offering a choice of high-performing foundation models.
+
+Designed to provide rapid insights from dense sustainability documents like corporate reports, regulatory filings, and standards, it streamlines navigation of diverse ESG information. 
+This allows you to rapidly analyze extensive text data, summarize key insights, and draw conclusions for your ESG reporting needs.
 
 **Table of Contents**
 
 - [Project Description](#project-description)
-  - [Architeceture Diagram](#architeceture-diagram)
-  - [AWS Services Used](#aws-services-used)
+  - [Architecture Diagram](#architeceture-diagram)
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Build the Infrastructure](#build-the-infrastructure)
@@ -17,13 +22,13 @@ This project is built and maintained by [Marco Masciola](https://www.linkedin.co
 
 # Project Description
 
-## Architeceture Diagram
+This Guidance demonstrates how to implement a Retrieval-Augmented Generation (RAG) process for your authoritative knowledge base, specifically addressing environmental, social, and governance (ESG) requirements. It combines the capabilities of Amazon Kendra and a large language model (LLM) on Amazon Bedrock—a fully managed service offering a choice of high-performing foundation models.
+
+Designed to provide rapid insights from dense sustainability documents like corporate reports, regulatory filings, and standards, it streamlines navigation of diverse ESG information. This allows you to rapidly analyze extensive text data, summarize key insights, and draw conclusions for your ESG reporting needs.
+
+## Architecture Diagram
 
 ![arch-diagram](./assets/figs/arch-diagram.png "Guidance Architecture Diagram")
-
-## AWS Services Used
-
-@todo: include
 
 # Getting Started
 
@@ -49,7 +54,7 @@ Install pre-commit hooks:
 $ pre-commit install
 ```
 
-Install Node depedencies:
+Install Node dependencies:
 
 ```bash
 $ npm install i -D
@@ -72,8 +77,8 @@ cdk deploy --all --require-approval never
 
 ### 3: Retrieve from the stack resource names
 
-Resource names are output durring the `cdk deploy` step.
-But you can retreive resource names by runnining this command:
+Resource names are output during the `cdk deploy` step.
+But you can retrieve resource names by running this command:
 
 ```bash
 source resources.sh
@@ -151,12 +156,14 @@ The `password` field should be included in quotes.
 
 ### 2: Run the Service
 
-Open the file [retriever.http](retriever.http) and update line 1 to include the API Gateway enpoint `<EndpointURL>`.
+Open the file [retriever.http](retriever.http) and update line 1 to include the API Gateway endpoint `<EndpointURL>`.
 Line 2 [retriever.http](retriever.http) should include the JW token generate in the previous step.
-On line 9 you can ask a sustainbility related question, such as:
-
+On line 9 you can ask a sustainability related question, such as:
+ 
 * What is the IFRS standard for sustainability?
 * How does IFRS S1 help investors with sustainability reporting?
+
+Then click on the "Send Request" text above line 4 to submit the query. 
 
 # Cleanup
 
