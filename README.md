@@ -116,9 +116,11 @@ aws cognito-idp admin-set-user-password --user-pool-id <CognitoUserPoolID> --use
 
 The user status will transition from the 'pending' state to the 'confirmed' state.
 
-### 6: Upload documents to S3 assets bucket
+### 6: Upload sustainability document to S3 assets bucket
 
-Substitute `<S3AssetBucketName>` from step 4 in the following command and execute it:
+Download the [IFRS Sustainability Standards and ESRS reconciliation](https://www.efrag.org/Assets/Download?assetUrl=%2Fsites%2Fwebpublishing%2FSiteAssets%2F22%2520Appendix%2520V%2520Comparison%2520of%2520IFRS%2520and%2520ESRS%25201%2520and%25202.pdf) table PDF document and save it to the folder `./assets/sust-resports`.
+The downloaded file name should be `Comparison_of_IFRS_and_ESRS_1and_2.pdf`.
+Nest, substitute `<S3AssetBucketName>` from step 4 in the following command and execute it:
 
 ```bash
 aws s3 cp ./assets/sust-reports/Comparison_of_IFRS_and_ESRS_1and_2.pdf s3://<S3AssetBucketName>/corp-sust-reports/

@@ -3,6 +3,7 @@
 .env
 .mypy_cache
 jspm_packages/
+assets/sust-reports
 src/libs
 **/node_modules
 __pycache__
