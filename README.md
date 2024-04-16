@@ -2,15 +2,17 @@
 
 **Table of Contents**
 
-- [Project Description](#project-description)
+- [Overview](#overview)
+  - [Capabilities and Key Benefits](#capabilities-and-key-benefits)
   - [Architecture Diagram](#architeceture-diagram)
+  - [Cost](#cost)
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Build the Infrastructure](#build-the-infrastructure)
   - [Run the Service](#run-the-service)
 - [Cleanup](#cleaup)
 
-## Overview
+# Overview
 
 [This Guidance demonstrates](https://aws.amazon.com/solutions/guidance/querying-sustainability-documents-using-generative-ai-for-esg-reporting-on-aws/) how to implement a Retrieval-Augmented Generation (RAG) process for your authoritative knowledge base, specifically addressing environmental, social, and governance (ESG) requirements. 
 It combines the capabilities of Amazon Kendra and a large language model (LLM) on Amazon Bedrock—a fully managed service offering a choice of high-performing foundation models.
