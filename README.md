@@ -7,7 +7,10 @@
   - [Architecture Diagram](#architeceture-diagram)
   - [Cost](#cost)
 - [Getting Started](#getting-started)
+  - [Operating System and Third Party Packages](#operating-system-and-third-party-packages)
+  - [AWS Account Requirements](#aws-account-requirements)
   - [Prerequisites](#prerequisites)
+- [Deploy](#)
   - [Build the Infrastructure](#build-the-infrastructure)
   - [Run the Service](#run-the-service)
 - [Cleanup](#cleaup)
@@ -52,22 +55,48 @@ We recommend creating a Budget through AWS Cost Explorer to help manage cost
 
 # Getting Started
 
-This Guidance uses aws-cdk. 
-If you are using aws-cdk for first time, please perform the be sure to bootstrap your environment. 
+This Guidance uses AWS CDK. 
+If you are using AWS CDK for first time, please perform the be sure to bootstrap your environment. 
 In case you are using aws-cdk for the first time, you can refer to the [Getting started with AWS CDK](https://docs.aws.amazon.com/cdk/v2/guide/getting_started.html) guide. 
+
+## Operating System and Third Party Packages
+
+The instructions in this guidance can be run on Windows, OSx, and Linux operating systems. 
+The following packages will need to be installed on your environment to deploy and run sample code provided in this guidance: 
+
+* An IDE of your choice
+* [REST Client](https://github.com/Huachao/vscode-restclient/blob/master/README.md)
+* [Latest version of Python](https://www.python.org/downloads/)
+* [Node.js](https://nodejs.org/en/learn/getting-started/how-to-install-nodejs) and [TypeScript](https://www.npmjs.com/package/typescript)
+
+## AWS Account Requirements
+
+IAM users must have permissions to deploy the stack using AWS CDK. Refer to the documentation [AWS Cloudformation permissions mechanisms](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-permissions-cloudformation.html) learn which actions need to be granted to deploy the Infrastructure. 
+
+Users will also need permission to deploy resources uses in this guidance, including the following: 
+
+* Amazon API Gateway
+* Amazon Cognito
+* Amazon DynamoDB
+* Amazon S3
+* AWS Lambda
 
 ## Prerequisites
 
-Third-party tools (If applicable)
-List any installable third-party tools required for deployment.
+This sections lists steps required to configure the environment before deploying the infrastructure using AWS CDK. 
+These steps include: 
 
-Clone the repository:
+* Cloning the repository for this guidance
+* Configuring the python virtual environment and installing packages
+* Installing node dependencies
+
+#### 1 -Clone the Repository
 
 ```bash
 git clone git@ssh.gitlab.aws.dev:sustainability-collab/genai-sus-autoreport.git
 ```
 
-Set up python environment:
+#### 2 - Configure Python Environment:
 
 ```bash
 python -m venv .genai-env
@@ -75,13 +104,7 @@ source .genai-env/bin/activate
 pip install -r requirements.txt
 ```
 
-Install pre-commit hooks:
-
-```bash
-pre-commit install
-```
-
-Install Node dependencies:
+#### 3 - Install Node Dependencies
 
 ```bash
 npm install i -D
