@@ -248,9 +248,9 @@ A new JSON response window should appear with a response generated from Amazon B
 ```bash 
 curl -H 'content-type: application/json' \
   -H 'Authorization:<token>' \
-	-d '{"question": "How does IFRS S1 help investors with sustainability reporting?", "model": "anthropic.claude-v2", "max_tokens": 300, "temperature": 0.7 }' \
-	-X POST \
-	<EndpointURL>
+  -d '{"question": "How does IFRS S1 help investors with sustainability reporting?", "model": "anthropic.claude-v2", "max_tokens": 300, "temperature": 0.7 }' \
+  -X POST \
+  <EndpointURL>
 ```
 
 # Cleanup
