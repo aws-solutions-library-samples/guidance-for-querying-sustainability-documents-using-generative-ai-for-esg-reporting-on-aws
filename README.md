@@ -24,6 +24,7 @@ This guidance uses the [AWS Cloud Development Kit (AWS CDK)](https://aws.amazon.
 
 Designed to provide rapid insights from dense sustainability documents like corporate reports, regulatory filings, and standards, this guidance streamlines navigation of diverse ESG information. 
 This allows you to rapidly analyze text data, summarize key insights, and draw conclusions for your ESG reporting needs.
+Refer to [this section to see an example question](#3-example-result) and response generated with this guidance sample code.
 
 ![example-deploy](./assets/figs/video.gif)
 
@@ -273,7 +274,7 @@ curl -H 'content-type: application/json' \
 In the above command line instruction, replace  `JWToken` with the authorization token provided in step 1 and the `EndpointURL` with the API address.
 Be sure to terminate the `EndpointURL` with `api_proxy`. 
 
-#### 3 Result
+#### 3 Example Result
 
 The response may vary depending on the Bedrock foundation model used, but a typical response expected for the question *"How does IFRS S1 help investors with sustainability reporting?"* may include a variation of the following: 
 
