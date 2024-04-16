@@ -23,7 +23,7 @@ It combines the capabilities of Amazon Kendra and a large language model (LLM) o
 This guidance uses the [AWS Cloud Development Kit (AWS CDK)](https://aws.amazon.com/cdk/) to deploy infrastruvture assets to build their sustainability large language model knowledge base and.
 
 Designed to provide rapid insights from dense sustainability documents like corporate reports, regulatory filings, and standards, this guidance streamlines navigation of diverse ESG information. 
-This allows you to rapidly analyze extensive text data, summarize key insights, and draw conclusions for your ESG reporting needs.
+This allows you to rapidly analyze text data, summarize key insights, and draw conclusions for your ESG reporting needs.
 
 ![example-deploy](./assets/figs/video.gif)
 
@@ -49,9 +49,23 @@ The following list covers current capabilities as of today:
 
 ## Cost
 
-This section is for a high-level cost estimate. 
-This cost scenario assumes.... 
+This section is for a high-level cost estimate for deploying sample code in this guidance for the `us-west-2` region. 
+This cost scenario assumes 5,000 API requests to estimate the cost for 1 month of usage with two [Amazon Bedrock foundation models](https://aws.amazon.com/bedrock/pricing/).
 
+| AWS service  | Dimensions | Cost [USD] |
+| ----------- | ------------ | ------------ |
+| Amazon API Gateway | 5,000 requests, 34 KB request size | $1/month |
+| Amazon Cognito | 10 users  | $1/month |
+| AWS Lambda (query) | 5,000 requests, 128 MB memory allocation, 25 s duration | $1/month |
+| AWS Lambda (S3 event trigger) | 5,000 requests, 128 MB memory allocation, 5 s duration | $1/month |
+| Amazon DynamoDB | 1 GB storage  | $1/month |
+| Amazon S3 | 10 GB standard storage  | $1/month |
+| Amazon Bedrock (Claude 2.0 - option 1) | 200 input / 300 output tokens per request  | $44/month |
+| Amazon Bedrock (Claude 3 Sonnet - option 2) | 200 input / 300 output tokens per request  | $26/month |
+| Amazon Kendra |   | $ /month |
+
+Note that the above estimate provides scenarios for two foundation models: Claude 2.0 and Clause 3 Sonnet. 
+More information is covered [here on the pricing for each foundation model](https://aws.amazon.com/bedrock/pricing/). 
 
 # Getting Started
 
