@@ -154,8 +154,8 @@ But you can retrieve resource names by running this command:
 
 ```bash
 source resource.sh
-
 ```
+
 * `S3AssetBucketName`
 * `EndpointURL`
 * `CognitoUserPoolID`
@@ -245,6 +245,13 @@ A new JSON response window should appear with a response generated from Amazon B
 
 #### 2 (Option 2) - Execute REST API using Curl
 
+```bash 
+curl -H 'content-type: application/json' \
+  -H 'Authorization:<token>' \
+	-d '{"question": "How does IFRS S1 help investors with sustainability reporting?", "model": "anthropic.claude-v2", "max_tokens": 300, "temperature": 0.7 }' \
+	-X POST \
+	<EndpointURL>
+```
 
 # Cleanup
 
