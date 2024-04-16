@@ -61,11 +61,11 @@ This cost scenario assumes 5,000 API requests to estimate the cost for 1 month o
 | AWS Lambda (S3 event trigger) | 5,000 requests, 128 MB memory allocation, 5 s duration | $1/month |
 | Amazon DynamoDB | 1 GB storage  | $1/month |
 | Amazon S3 | 10 GB standard storage  | $1/month |
-| Amazon Bedrock (Claude 2.0 - option 1) | 200 input / 300 output tokens per request  | $44/month |
-| Amazon Bedrock (Claude 3 Sonnet - option 2) | 200 input / 300 output tokens per request  | $26/month |
+| Amazon Bedrock (Claude 2.0 - option 1) | 200 input / 300 output tokens per request (5,000 requests) | $44/month |
+| Amazon Bedrock (Claude 3 Sonnet - option 2) | 200 input / 300 output tokens per request (5,000 requests) | $26/month |
 | Amazon Kendra Developer | 730 hours x 1.125 USD/hour | $821/month |
 
-Note that the above estimate covers options evaluating 5,000 requests for two foundation models: Claude 2.0 and Clause 3 Sonnet. More information is [covered here](https://aws.amazon.com/bedrock/pricing/) on the FM pricing model. 
+Note that the above estimate covers options evaluating 5,000 requests for two foundation models: Claude 2.0 and Clause 3 Sonnet. More information is [covered here](https://aws.amazon.com/bedrock/pricing/) on the FM pricing model. So if Claude 3 Sonnet is applied over the entire month, the total cost is $853/month. 
 
 This cost model assumes the infrastructure is deployed over 1 month (730 hours). 
 The limit costs, be sure to destroy the infrastructure after deployment as covered in the [cleanup section](#cleaup). 
