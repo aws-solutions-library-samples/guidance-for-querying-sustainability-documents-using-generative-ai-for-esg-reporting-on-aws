@@ -63,10 +63,15 @@ This cost scenario assumes 5,000 API requests to estimate the cost for 1 month o
 | Amazon S3 | 10 GB standard storage  | $1/month |
 | Amazon Bedrock (Claude 2.0 - option 1) | 200 input / 300 output tokens per request  | $44/month |
 | Amazon Bedrock (Claude 3 Sonnet - option 2) | 200 input / 300 output tokens per request  | $26/month |
-| Amazon Kendra |   | $ /month |
+| Amazon Kendra Developer | 730 hours x 1.125 USD/hour | $821/month |
 
-Note that the above estimate provides scenarios for two foundation models: Claude 2.0 and Clause 3 Sonnet. 
-More information is covered [here on the pricing for each foundation model](https://aws.amazon.com/bedrock/pricing/). 
+Note that the above estimate covers options for:
+
+* Two foundation models: Claude 2.0 and Clause 3 Sonnet. More information is [covered here](https://aws.amazon.com/bedrock/pricing/) on the FM pricing model. 
+* Amazon Kendra Developer and Enterprise edition. More information is [covered here](https://aws.amazon.com/kendra/pricing/) on the Kendra pricing model.
+
+This cost model assumes the infrastructure is deployed over 1 month (730 hours). 
+The limit costs, be sure to destroy the infrastructure after deployment as covered in the [cleanup section](#cleaup). 
 
 # Getting Started
 
