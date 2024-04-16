@@ -245,13 +245,35 @@ A new JSON response window should appear with a response generated from Amazon B
 
 #### 2 (Option 2) - Execute REST API using Curl
 
+Alternatively, the `curl` command line tool can be used to submit a REST APi request. 
+This request is submitted through the following command line instruction:
+
 ```bash 
 curl -H 'content-type: application/json' \
   -H 'Authorization:<JWToken>' \
   -d '{"question": "How does IFRS S1 help investors with sustainability reporting?", "model": "anthropic.claude-v2", "max_tokens": 300, "temperature": 0.7 }' \
   -X POST \
-  <EndpointURL>
+  <EndpointURL>/api_proxy
 ```
+
+In the above command line instruction, replace  `JWToken` with the authorization token provided in step 1 and the `EndpointURL` with the API address.
+Be sure to terminate the `EndpointURL` with `api_proxy`. 
+
+#### 3 Result
+
+The response may vary depending on the Bedrock foundation model used, but a typical response expected for the question *"How does IFRS S1 help investors with sustainability reporting?"* may include a variation of the following: 
+
+```bash 
+{
+    "uuid": "8c0e94bb-2a3e-4ec9-ba18-e5fab834483f", 
+    "boto3_version": "1.34.49", 
+    "kendra_index_id": "96bef2af-449d-43e4-9c70-e0ac0c3f5d26", 
+    "answer": " Based on the provided context, IFRS S1 helps investors with sustainability reporting in a few key ways:\n\n- It establishes overall sustainability-related disclosure requirements that provide investors with consistent, comparable, and reliable sustainability-related financial information. This makes it easier for investors to incorporate sustainability considerations into their analysis and decision-making.\n\n- It requires disclosure of material sustainability-related risks and opportunities that affect enterprise value. This gives investors insight into how sustainability issues may impact the financial performance and position of companies.\n\n- It calls for disclosure of sustainability-related financial statement metrics and related disclosures that are useful for assessing enterprise value. This provides investors with quantified sustainability information that can be incorporated into financial analysis models. \n\n- It sets requirements on where sustainability disclosures should be located within the annual report package. Having disclosures in consistent locations makes them easier for investors to find and compare.\n\n- Overall, by promoting consistent, reliable and decision-useful sustainability reporting, IFRS S1 aims to help investors gain a more comprehensive understanding of enterprise value and make better informed investment decisions. The requirements seek to meet the information needs of investors who factor sustainability matters into their capital allocation decisions."
+}
+```
+
+The above JSON response included a UUID and Kendra index ID to for traceability and auditing purposed. 
+The history of the full request transaction is recorded in the DynamoDB serviced provisioned in this guidance sample code. 
 
 # Cleanup
 
