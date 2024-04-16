@@ -49,12 +49,9 @@ The following list covers current capabilities as of today:
 
 ## Cost
 
-This section is for a high-level cost estimate. Think of a likely straightforward scenario with reasonable assumptions based on the problem the Guidance is trying to solve. If applicable, provide an in-depth cost breakdown table in this section.
-Start this section with the following boilerplate text:
-You are responsible for the cost of the AWS services used while running this Guidance. As of  , the cost for running this Guidance with the default settings in the <Default AWS Region (Most likely will be US East (N. Virginia)) > is approximately $<n.nn> per month for processing (  records ).
-Replace this amount with the approximate cost for running your Guidance in the default Region. This estimate should be per month and for processing/serving resonable number of requests/entities.
-Suggest you keep this boilerplate text:
-We recommend creating a Budget through AWS Cost Explorer to help manage costs. Prices are subject to change. For full details, refer to the pricing webpage for each AWS service used in this Guidance.
+This section is for a high-level cost estimate. 
+This cost scenario assumes.... 
+
 
 # Getting Started
 
@@ -68,10 +65,14 @@ The instructions in this guidance can be run on Windows, OSx, and Linux operatin
 The following packages will need to be installed on your environment to deploy and run sample code provided in this guidance: 
 
 * An IDE of your choice
-* [REST Client](https://github.com/Huachao/vscode-restclient/blob/master/README.md)
 * [Latest version of Python](https://www.python.org/downloads/)
-* [Node.js](https://nodejs.org/en/learn/getting-started/how-to-install-nodejs) and [TypeScript](https://www.npmjs.com/package/typescript)
-* [jq](https://jqlang.github.io/jq/download/)
+* [Node.js](https://nodejs.org/en/learn/getting-started/how-to-install-nodejs) and [TypeScript](https://www.npmjs.com/package/typescript) are used for AWS CDK infrastructure deployment
+* [jq](https://jqlang.github.io/jq/download/) command-line JSON parser to retrieve AWS services names
+
+Must install one of the following options: 
+
+* option 1 - [REST Client](https://github.com/Huachao/vscode-restclient/blob/master/README.md) (optional) to submit REST APIs through VS Code
+* options 2 - [curl](https://curl.se/) to submit REST APIs from the command line
 
 ## AWS Account Requirements
 
@@ -228,16 +229,22 @@ npx ts-node auth/auth-service.ts --pool=<CognitoUserPoolID> --client=<CognitoUse
 
 The `password` field should be included in quotes.
 
-#### 2 - Run the Service
+#### 2 (Option 1) - Execute REST API using REST Client
 
+This option is for VS Code users with the [REST Client package](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) installed. 
+This workflow is exemplified in the gif provided in [Overview section](#overview). 
 Open the file [retriever.http](retriever.http) and update line 1 to include the API Gateway endpoint `<EndpointURL>`.
 Line 2 [retriever.http](retriever.http) should include the JW token generate in the previous step.
 On line 10 you can ask a sustainability related question, such as:
  
-* What is the IFRS standard for sustainability?
-* How does IFRS S1 help investors with sustainability reporting?
+* *"What is the IFRS standard for sustainability?"*
+* *"How does IFRS S1 help investors with sustainability reporting?"*
 
 Then click on the "Send Request" text above line 4 to submit the query. 
+A new JSON response window should appear with a response generated from Amazon Bedrock using the PDF documents as the knowledge base for the query. 
+
+#### 2 (Option 2) - Execute REST API using Curl
+
 
 # Cleanup
 
