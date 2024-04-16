@@ -67,8 +67,8 @@ This cost scenario assumes 5,000 API requests to estimate the cost for 1 month o
 
 Note that the above estimate covers options evaluating 5,000 requests for two foundation models: Claude 2.0 and Clause 3 Sonnet. More information is [covered here](https://aws.amazon.com/bedrock/pricing/) on the FM pricing model. So if Claude 3 Sonnet is applied over the entire month, the total cost is $853/month. 
 
-This cost model assumes the infrastructure is deployed over 1 month (730 hours). 
-The limit costs, be sure to destroy the infrastructure after deployment as covered in the [cleanup section](#cleaup). 
+This cost model assumes the infrastructure is deployed for 1 month (730 hours). 
+Cost can be reduced by destroying the infrastructure to limit the hours Kendra is deployed. Infrastructure clean up is covered in the [cleanup section](#cleaup). 
 
 # Getting Started
 
