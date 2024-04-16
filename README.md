@@ -4,6 +4,7 @@
 
 - [Overview](#overview)
   - [Capabilities and Key Benefits](#capabilities-and-key-benefits)
+  - [Authors](#authors)
   - [Architecture Diagram](#architeceture-diagram)
   - [Cost](#cost)
 - [Getting Started](#getting-started)
@@ -25,6 +26,8 @@ Designed to provide rapid insights from dense sustainability documents like corp
 This allows you to rapidly analyze extensive text data, summarize key insights, and draw conclusions for your ESG reporting needs.
 
 ![example-deploy](./assets/figs/video.gif)
+
+## Authors
 
 This project is built and maintained by [Marco Masciola](https://www.linkedin.com/in/marcomasciola/) and [Sundeep Ramachandran](https://www.linkedin.com/in/rsundeep/).
 
@@ -68,6 +71,7 @@ The following packages will need to be installed on your environment to deploy a
 * [REST Client](https://github.com/Huachao/vscode-restclient/blob/master/README.md)
 * [Latest version of Python](https://www.python.org/downloads/)
 * [Node.js](https://nodejs.org/en/learn/getting-started/how-to-install-nodejs) and [TypeScript](https://www.npmjs.com/package/typescript)
+* [jq](https://jqlang.github.io/jq/download/)
 
 ## AWS Account Requirements
 
@@ -109,6 +113,22 @@ pip install -r requirements.txt
 ```bash
 npm install i -D
 ```
+
+# Deploy 
+
+There are seven steps to deploy the sample code guidance in your AWS account. 
+These steps involve:
+
+1. Installing the Python dependencies to create the [Lambda layers](https://docs.aws.amazon.com/lambda/latest/dg/chapter-layers.html) deployed with the infrastructure
+2. Bootstrapping CDK and deploying the infrastructure
+3. Retrieve the stack resource name using [resource.sh](./resource.sh)
+4. Create a user in Cognito authorized to access the API endpoint
+5. Activate the Cognito user
+6. Upload sustainability documents to your S3 bucket
+7. Synchronize Kendra data source connector with documents uploaded in S3
+
+Note that in step 7, the Kendra data source connect will need to be resynchronized each time a new document is uploaded into S3. 
+Optionally, a [Kendra scheduled synchronize can be set up](https://docs.aws.amazon.com/kendra/latest/dg/data-source.html), but in this guidance the synchronization is trigger manually. 
 
 ## Build the Infrastructure
 
@@ -153,7 +173,7 @@ Define a `username` with one time `password` login credentials:
 aws cognito-idp admin-create-user --user-pool-id <CognitoUserPoolID> --username <username> --temporary-password "<password>"
 ```
 
-Make sure the password complexity meets the [policy requirements in auth.ts](src/infrastructure/bin/auth.ts#L48).
+Make sure the password complexity meets the [policy requirements in auth.ts](src/infrastructure/lib/auth.ts#L48).
 
 #### 5 - Activate a users in AWS Cognito
 
@@ -212,13 +232,12 @@ The `password` field should be included in quotes.
 
 Open the file [retriever.http](retriever.http) and update line 1 to include the API Gateway endpoint `<EndpointURL>`.
 Line 2 [retriever.http](retriever.http) should include the JW token generate in the previous step.
-On line 9 you can ask a sustainability related question, such as:
+On line 10 you can ask a sustainability related question, such as:
  
 * What is the IFRS standard for sustainability?
 * How does IFRS S1 help investors with sustainability reporting?
 
 Then click on the "Send Request" text above line 4 to submit the query. 
-
 
 # Cleanup
 
