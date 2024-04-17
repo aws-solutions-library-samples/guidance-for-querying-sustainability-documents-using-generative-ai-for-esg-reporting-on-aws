@@ -248,7 +248,7 @@ npx ts-node auth/auth-service.ts --pool=<CognitoUserPoolID> --client=<CognitoUse
 
 The `password` field should be included in quotes.
 
-#### 2 - (Option 1) Execute REST API using REST Client
+#### 2 - (option A) Execute REST API using REST Client
 
 This option applies to VS Code users using the [REST Client package](https://marketplace.visualstudio.com/items?itemName=humao.rest-client). 
 This workflow is exemplified in the gif provided in [Overview section](#overview). 
@@ -262,7 +262,7 @@ On line 10 you can ask a sustainability related question, such as:
 Then click on the "Send Request" text above line 4 to submit the query. 
 A new JSON response window should appear with a response generated from Amazon Bedrock using the PDF documents as the knowledge base for the query. 
 
-#### 2 - (Option 2) Execute REST API using Curl
+#### 2 - (option B) Execute REST API using Curl
 
 Alternatively, the `curl` command line tool can be used to submit a REST APi request. 
 This request is submitted through the following command line instruction:
