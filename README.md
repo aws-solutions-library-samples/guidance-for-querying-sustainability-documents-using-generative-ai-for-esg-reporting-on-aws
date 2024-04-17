@@ -1,7 +1,5 @@
 # Guidance for Querying Sustainability Documents Using Generative AI for ESG Reporting on AWS
 
-**Table of Contents**
-
 - [Overview](#overview)
   - [Capabilities and Key Benefits](#capabilities-and-key-benefits)
   - [Authors](#authors)
@@ -20,7 +18,7 @@
 
 [This Guidance demonstrates](https://aws.amazon.com/solutions/guidance/querying-sustainability-documents-using-generative-ai-for-esg-reporting-on-aws/) how to implement a Retrieval-Augmented Generation (RAG) process for your authoritative knowledge base, specifically addressing environmental, social, and governance (ESG) requirements. 
 It combines the capabilities of Amazon Kendra and a large language model (LLM) on Amazon Bedrock—a fully managed service offering a choice of high-performing foundation models.
-This guidance uses the [AWS Cloud Development Kit (AWS CDK)](https://aws.amazon.com/cdk/) to deploy infrastruvture assets to build their sustainability large language model knowledge base and.
+This guidance uses the [AWS Cloud Development Kit (AWS CDK)](https://aws.amazon.com/cdk/) to deploy infrastructure assets to build a sustainability large language model knowledge base and RAG engine.
 
 Designed to provide rapid insights from dense sustainability documents like corporate reports, regulatory filings, and standards, this guidance streamlines navigation of diverse ESG information. 
 This allows you to rapidly analyze text data, summarize key insights, and draw conclusions for your ESG reporting needs.
@@ -34,14 +32,13 @@ This project is built and maintained by [Marco Masciola](https://www.linkedin.co
 
 ## Capabilities and Key Benefits
 
-The following list covers current capabilities as of today:
+The following list explains the capabilities provided in this guidance and sample code:
 
-* Accepts a PDF file in any format to create a knowledge base using [Amazon Kendra](https://aws.amazon.com/kendra/)
-* Easily switch [Amazon Bedrock foundation models](https://docs.aws.amazon.com/bedrock/latest/userguide/models-supported.html) at runtime
+* Easily switch to any foundation model supported on [Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/models-supported.html) at runtime
+* Accepts PDF, CSV, MS Word files, and [other support formats](https://docs.aws.amazon.com/kendra/latest/dg/index-document-types.html) to create a knowledge base using [Amazon Kendra](https://aws.amazon.com/kendra/)
 * **Automated** infrastructure deployment using AWS CDk to reduce manual tasks and errors during deployment
-* Built using serverless architecture to provide high **Scalability** and high availability, durability, and resilience
-* OLicensed under Apache License Version 2.0 as an open source project
-* Knowledge base can be triggered on a triggered 
+* Built using serverless architecture to provide **scalability** and high **availability**, **durability**, and **resilience**
+* Licensed under Apache License Version 2.0 as an open source project
 * Authentication and authorization provided through [Amazon Cognito](https://aws.amazon.com/cognito/)
 
 ## Architecture Diagram
@@ -50,8 +47,8 @@ The following list covers current capabilities as of today:
 
 ## Cost
 
-This section is for a high-level cost estimate for deploying sample code in this guidance for the `us-west-2` region. 
-This cost scenario assumes 5,000 API requests to estimate the cost for 1 month of usage with two [Amazon Bedrock foundation models](https://aws.amazon.com/bedrock/pricing/).
+This section provides a high-level cost estimate for deploying sample code in this guidance in the `us-west-2` region. 
+This cost scenario assumes 5,000 API requests over a 1 month usage period. We provide estimates for two Amazon Bedrock foundation models. Refer to this [link]](https://aws.amazon.com/bedrock/pricing/) for pricing for all foundation models available on Bedrock. 
 
 | AWS service  | Dimensions | Cost [USD] |
 | ----------- | ------------ | ------------ |
@@ -65,16 +62,16 @@ This cost scenario assumes 5,000 API requests to estimate the cost for 1 month o
 | Amazon Bedrock (Claude 3 Sonnet - option 2) | 200 input / 300 output tokens per request (5,000 requests) | $26/month |
 | Amazon Kendra Developer | 730 hours x 1.125 USD/hour | $821/month |
 
-Note that the above estimate covers options evaluating 5,000 requests for two foundation models: Claude 2.0 and Clause 3 Sonnet. More information is [covered here](https://aws.amazon.com/bedrock/pricing/) on the FM pricing model. So if Claude 3 Sonnet is applied over the entire month, the total cost is $853/month. 
-
-This cost model assumes the infrastructure is deployed for 1 month (730 hours). 
-Cost can be reduced by destroying the infrastructure to limit the hours Kendra is deployed. Infrastructure clean up is covered in the [cleanup section](#cleaup). 
+Notes:  
+* The estimated cost using Claude 3 Sonnet for 1 month is $853/month
+* The estimated cost using Claude 2.0 for 1 month is $871/month
+* This cost model assumes the infrastructure is deployed for 1 month (730 hours)
+* Cost can be reduced by limiting the hours Kendra is deployed by destroying the infrastructure. Infrastructure clean up is covered in the [cleanup section](#cleaup). 
 
 # Getting Started
 
 This Guidance uses AWS CDK. 
-If you are using AWS CDK for first time, please perform the be sure to bootstrap your environment. 
-In case you are using aws-cdk for the first time, you can refer to the [Getting started with AWS CDK](https://docs.aws.amazon.com/cdk/v2/guide/getting_started.html) guide. 
+In case you are using AWS CDK for the first time, you can refer to the [Getting started with AWS CDK](https://docs.aws.amazon.com/cdk/v2/guide/getting_started.html) guide. 
 
 ## Operating System and Third Party Packages
 
@@ -93,9 +90,9 @@ Must install one of the following options:
 
 ## AWS Account Requirements
 
-IAM users must have permissions to deploy the stack using AWS CDK. Refer to the documentation [AWS Cloudformation permissions mechanisms](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-permissions-cloudformation.html) learn which actions need to be granted to deploy the Infrastructure. 
+IAM users must have permissions to deploy the stack using AWS CDK. Refer to this documentation on how to assign [AWS Cloudformation permissions](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-permissions-cloudformation.html) to learn which actions need to be granted for deploying infrastructure. 
 
-Users will also need permission to deploy resources uses in this guidance, including the following: 
+Users will also need permission to deploy the following resources used in this guidance: 
 
 * Amazon API Gateway
 * Amazon Cognito
@@ -112,7 +109,7 @@ These steps include:
 * Configuring the python virtual environment and installing packages
 * Installing node dependencies
 
-#### 1 -Clone the Repository
+#### 1 - Clone the Repository
 
 ```bash
 git clone git@ssh.gitlab.aws.dev:sustainability-collab/genai-sus-autoreport.git
@@ -158,6 +155,7 @@ pip install -r src/lambda/requirements.txt --target ./src/libs/python --platform
 
 #### 2 - Deploy infrastructure
 
+If you are using AWS CDK for first time, please perform the be sure to bootstrap your environment.  
 ```bash
 cdk bootstrap
 cdk synth
