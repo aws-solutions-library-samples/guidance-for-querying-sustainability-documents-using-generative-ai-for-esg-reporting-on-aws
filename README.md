@@ -85,8 +85,8 @@ The following packages will need to be installed on your environment to deploy a
 
 Must install one of the following: 
 
-* option 1 - [REST Client](https://github.com/Huachao/vscode-restclient/blob/master/README.md) to submit REST APIs through VS Code
-* option 2 - [curl](https://curl.se/) to submit REST APIs from the command line
+* Option A - [REST Client](https://github.com/Huachao/vscode-restclient/blob/master/README.md) to submit REST APIs through VS Code
+* Option B - [curl](https://curl.se/) to submit REST APIs from the command line
 
 ## AWS Account Requirements
 
@@ -105,9 +105,10 @@ Users will also need permission to deploy the following resources used in this g
 This section provides the steps required to configure your environment before deploying the infrastructure using AWS CDK. 
 These steps include: 
 
-* Cloning the repository for this guidance
-* Configuring the python virtual environment and installing packages
-* Installing node dependencies
+1. Cloning the repository for this guidance
+2. Configuring the python virtual environment and installing packages
+3. Installing node dependencies
+4. Enable Bedrock Access in your AWS Account
 
 #### 1 - Clone the Repository
 
