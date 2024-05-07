@@ -12,7 +12,7 @@
 - [Deploy](#)
   - [Build the Infrastructure](#build-the-infrastructure)
   - [Run the Service](#run-the-service)
-- [Cleanup](#cleaup)
+- [Cleanup](#cleanup)
 
 # Overview
 
@@ -48,25 +48,25 @@ The following list explains the capabilities provided in this guidance and sampl
 ## Cost
 
 This section provides a high-level cost estimate for deploying sample code in this guidance in the `us-west-2` region. 
-This cost scenario assumes 5,000 API requests over a 1 month usage period. We provide estimates for two Amazon Bedrock foundation models. Refer to this [link]](https://aws.amazon.com/bedrock/pricing/) for pricing for all foundation models available on Bedrock. 
+This cost scenario assumes 5,000 API requests over a 1 month usage period. We provide estimates for two Amazon Bedrock foundation models. Refer to this [link](https://aws.amazon.com/bedrock/pricing/) for pricing for all foundation models available on Bedrock. 
 
 | AWS service  | Dimensions | Cost [USD] |
 | ----------- | ------------ | ------------ |
-| Amazon API Gateway | 5,000 requests, 34 KB request size | $1/month |
-| Amazon Cognito | 10 users  | $1/month |
-| AWS Lambda (query) | 5,000 requests, 128 MB memory allocation, 25 s duration | $1/month |
-| AWS Lambda (S3 event trigger) | 5,000 requests, 128 MB memory allocation, 5 s duration | $1/month |
-| Amazon DynamoDB | 1 GB storage  | $1/month |
-| Amazon S3 | 10 GB standard storage  | $1/month |
+| Amazon API Gateway | 5,000 requests, 34 KB request size | <$1/month |
+| Amazon Cognito | 10 users  | <$1/month |
+| AWS Lambda (query) | 5,000 requests, 128 MB memory allocation, 25 s duration | <$1/month |
+| AWS Lambda (S3 event trigger) | 5,000 requests, 128 MB memory allocation, 5 s duration | <$1/month |
+| Amazon DynamoDB | 1 GB storage  | <$2/month |
+| Amazon S3 | 10 GB standard storage  | <$1/month |
 | Amazon Bedrock (Claude 2.0 - option 1) | 200 input / 300 output tokens per request (5,000 requests) | $44/month |
 | Amazon Bedrock (Claude 3 Sonnet - option 2) | 200 input / 300 output tokens per request (5,000 requests) | $26/month |
 | Amazon Kendra Developer | 730 hours x 1.125 USD/hour | $821/month |
 
 Notes:  
-* The estimated cost using Claude 3 Sonnet for 1 month is $853/month
-* The estimated cost using Claude 2.0 for 1 month is $871/month
+* The estimated cost using Claude 3 Sonnet for 1 month is $854/month
+* The estimated cost using Claude 2.0 for 1 month is $872/month
 * This cost model assumes the infrastructure is deployed for 1 month (730 hours)
-* Cost can be reduced by limiting the hours Kendra is deployed by destroying the infrastructure. Infrastructure clean up is covered in the [cleanup section](#cleaup). 
+* Cost can be reduced by limiting the hours Kendra is deployed by destroying the infrastructure. Infrastructure clean up is covered in the [cleanup section](#cleanup). 
 
 # Getting Started
 
@@ -330,5 +330,5 @@ cdk destroy --all
 The following services must be manually destroyed in the AWS console since the CDK stack retains certain services for auditing and data retention purposes:
 
 * [S3 access logs bucket](https://s3.console.aws.amazon.com/s3/home?) prefixed by `sust-assets-logs-*`
-* [DynamoDB table](https://us-west-1.console.aws.amazon.com/dynamodbv2/home?#tables)
+* [DynamoDB table](https://us-west-2.console.aws.amazon.com/dynamodbv2/home?#tables)
 * [Amazon Cognito](https://us-west-2.console.aws.amazon.com/cognito/v2/idp/user-pools?) user pools
