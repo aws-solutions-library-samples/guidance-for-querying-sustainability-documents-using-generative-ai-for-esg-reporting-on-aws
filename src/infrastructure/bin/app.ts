@@ -18,6 +18,8 @@ import { LambdaEventStack } from '../lib/lambda-event';
 import { supressStatements } from './utils'
 
 let uuid = uuidv4().substring(0,8);;
+const desc = 'Guidance for querying sustainability documents using generative ai for esg reporting on aws (SO9429)'
+
 
 const app = new cdk.App();
 
@@ -54,7 +56,8 @@ const authStack = new AuthStack(app, 'AuthStack', {
 const apiStack = new APIStack(app, 'APIStack', {
     apiLambdaProxy: lambdaAPIStack.lambdaProxy,
     userPool: authStack.userPool,
-    suffix: uuid
+    suffix: uuid,
+    description: desc
 });
 
 kendraDataSourceStack.node.addDependency(bucketStack);
