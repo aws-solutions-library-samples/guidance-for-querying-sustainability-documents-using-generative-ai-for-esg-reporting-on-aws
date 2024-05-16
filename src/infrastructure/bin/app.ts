@@ -24,40 +24,33 @@ const desc = 'Guidance for querying sustainability documents using generative ai
 const app = new cdk.App();
 
 const bucketStack = new BucketStack(app, 'BucketStack', {
-    suffix: uuid,
-    description: desc
+    suffix: uuid
 });
 
 const kendraIndexStack = new KendraIndexStack(app, 'KendraIndexStack', {
-    suffix: uuid,
-    description: desc
+    suffix: uuid
 });
 
 const kendraDataSourceStack = new KendraDataSourceStack(app, 'KendraDataSourceStack', {
-    suffix: uuid,
-    description: desc
+    suffix: uuid
 });
 
 const dbStack = new DynamoDBStack(app, 'DynamoDBStack', {
-    suffix: uuid,
-    description: desc
+    suffix: uuid
 });
 
 const lambdaEvent = new LambdaEventStack(app, 'LambdaTriggerStack', {
     bucket: bucketStack.bucket,
-    suffix: uuid,
-    description: desc
+    suffix: uuid
 });
 
 const lambdaAPIStack = new LambdaAPIStack(app, 'LambdaStack', {
     dbTableInterface: dbStack.tableInterface,
-    suffix: uuid,
-    description: desc
+    suffix: uuid
 });
 
 const authStack = new AuthStack(app, 'AuthStack', {
-    suffix: uuid,
-    description: desc
+    suffix: uuid
 });
 
 const apiStack = new APIStack(app, 'APIStack', {
