@@ -18,43 +18,53 @@ import { LambdaEventStack } from '../lib/lambda-event';
 import { supressStatements } from './utils'
 
 let uuid = uuidv4().substring(0,8);;
+const desc = 'Guidance for querying sustainability documents using generative ai for esg reporting on aws (SO9429)'
+
 
 const app = new cdk.App();
 
 const bucketStack = new BucketStack(app, 'BucketStack', {
-    suffix: uuid
+    suffix: uuid,
+    description: desc
 });
 
 const kendraIndexStack = new KendraIndexStack(app, 'KendraIndexStack', {
-    suffix: uuid
+    suffix: uuid,
+    description: desc
 });
 
 const kendraDataSourceStack = new KendraDataSourceStack(app, 'KendraDataSourceStack', {
-    suffix: uuid
+    suffix: uuid,
+    description: desc
 });
 
 const dbStack = new DynamoDBStack(app, 'DynamoDBStack', {
-    suffix: uuid
+    suffix: uuid,
+    description: desc
 });
 
 const lambdaEvent = new LambdaEventStack(app, 'LambdaTriggerStack', {
     bucket: bucketStack.bucket,
-    suffix: uuid
+    suffix: uuid,
+    description: desc
 });
 
 const lambdaAPIStack = new LambdaAPIStack(app, 'LambdaStack', {
     dbTableInterface: dbStack.tableInterface,
-    suffix: uuid
+    suffix: uuid,
+    description: desc
 });
 
 const authStack = new AuthStack(app, 'AuthStack', {
-    suffix: uuid
+    suffix: uuid,
+    description: desc
 });
 
 const apiStack = new APIStack(app, 'APIStack', {
     apiLambdaProxy: lambdaAPIStack.lambdaProxy,
     userPool: authStack.userPool,
-    suffix: uuid
+    suffix: uuid,
+    description: desc
 });
 
 kendraDataSourceStack.node.addDependency(bucketStack);
