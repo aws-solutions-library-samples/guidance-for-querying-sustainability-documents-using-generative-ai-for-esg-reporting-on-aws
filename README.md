@@ -113,7 +113,7 @@ These steps include:
 #### 1 - Clone the Repository
 
 ```bash
-git clone git@ssh.gitlab.aws.dev:sustainability-collab/genai-sus-autoreport.git
+git clone https://github.com/aws-solutions-library-samples/guidance-for-querying-sustainability-documents-using-generative-ai-for-esg-reporting-on-aws.git
 ```
 
 #### 2 - Configure Python Environment
