@@ -19,7 +19,7 @@
     "@types/node": "^20.11.20",
     "aws-amplify": "^6.0.21",
     "aws-cdk": "^2.130.0",
-    "aws-cdk-lib": "^2.130.0",
+    "aws-cdk-lib": "^2.189.0",
     "cdk-nag": "^2.28.67",
     "constructs": "^10.3.0",
     "i": "^0.3.7",
