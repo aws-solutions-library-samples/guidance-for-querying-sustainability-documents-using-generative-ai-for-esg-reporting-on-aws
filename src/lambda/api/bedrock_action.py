@@ -22,25 +22,25 @@ else:
 
 
 FACET_PROMPT = string.Template("""
-\n\nHuman: You are a bot that will help find the metadata for the question.
-Your response is limited to the following two options: "corp-sust-report" and
+You are a bot that will help find the metadata for the question.
+Your response is limited to the following two options: "corp-sust-reports" and
 "not-sure". If the question is related to a sustainability  framework like
-TCFD, CSRD, GRI, SASB, IFRS or others, reply with "corp-sust-report".
+TCFD, CSRD, GRI, SASB, IFRS or others, reply with "corp-sust-reports".
 ---
-QUESTION: ${query}
-
-\n\nAssistant:""")
+QUESTION: 
+${query}
+""")
 
 
 SUMMARY_PROMPT = string.Template("""
-\n\nHuman: Answer the following question based on the context below.
+Answer the following question based on the context below.
 ---
-QUESTION: ${query}
+QUESTION: 
+${query}
 ---
 CONTEXT:
 ${context}
-
-\n\nAssistant:""")
+""")
 
 
 def _facet(payload):
@@ -49,19 +49,27 @@ def _facet(payload):
     bedrock_client = boto3.client('bedrock-runtime', REGION)
 
     body = json.dumps({
-        'prompt': FACET_PROMPT.substitute(query=payload['question']),
-        'max_tokens_to_sample': payload['max_tokens'],
+        'anthropic_version': 'bedrock-2023-05-31',
+        'max_tokens': payload['max_tokens'],
         'temperature': payload['temperature'],
-        'stop_sequences': ['\n\nHuman:']
+        'top_p': 0.5,
+        'messages': [{
+            'role': 'user',
+            'content': [{
+                'type': 'text', 
+                'text': FACET_PROMPT.substitute(query=payload['question']),
+            }]
+        }],
     })
 
     response = bedrock_client.invoke_model(
         body=body,
-        modelId=payload['model']
+        modelId=payload['model'],
+        accept='application/json',
+        contentType='application/json'
     )
     response_body = json.loads(response.get('body').read())
-
-    return (response_body.get('completion'))
+    return response_body['content'][0]['text']
 
 
 def _kendra_rag(question, metadata):
@@ -71,21 +79,24 @@ def _kendra_rag(question, metadata):
 
     result = kendra_client.retrieve(
         QueryText=question,
-        IndexId=KENDRA_INDEX_ID,
-        AttributeFilter={'AndAllFilters':
-                         [
-                             {
-                                 'EqualsTo': {
-                                     'Key': 'sust_category',
-                                     'Value': {'StringValue': metadata}
-                                 }
-                             }
-                         ]
-                         }
+        IndexId=KENDRA_INDEX_ID
     )
-    chunks = [r['Content'] for r in result['ResultItems']]
-    joined_chunks = '\n'.join(chunks)
-    return (joined_chunks)
+
+    payload = {"context": []}
+    for r in result['ResultItems']:
+        d = {
+            "document_file_name": r["DocumentTitle"],
+            "document_file_location": r["DocumentId"],
+            "citation_page": [
+                d["Value"]["LongValue"] 
+                for d in r["DocumentAttributes"] 
+                if d["Key"] == "_excerpt_page_number"
+            ][0],   
+            "summary": r["Content"]
+        }
+        payload["context"].append(d)    
+    
+    return json.dumps(payload)
 
 
 def _summarize(payload, rag_context):
@@ -98,21 +109,29 @@ def _summarize(payload, rag_context):
         context=rag_context
     )
 
-    body = json.dumps(
-        {
-            'prompt': prompt,
-            'max_tokens_to_sample': payload['max_tokens'],
-            'temperature': payload['temperature'],
-            'stop_sequences': ['\n\nHuman:']
-        }
-    )
+    body = json.dumps({
+        'anthropic_version': 'bedrock-2023-05-31',
+        'max_tokens': 3000,
+        'temperature': 0.5,
+        'top_p': 0.5,
+        'messages': [{
+            'role': 'user',
+            'content': [{
+                'type': 'text', 
+                'text': prompt
+            }]
+        }],
+    })
 
     response = bedrock_client.invoke_model(
         body=body,
-        modelId=payload['model']
+        modelId=payload['model'],
+        accept='application/json',
+        contentType='application/json'
     )
+
     response_body = json.loads(response.get('body').read())
-    return (response_body.get('completion'))
+    return response_body['content'][0]['text']
 
 
 def _write_to_db(query, uuid, db_client: boto3.client):
@@ -137,5 +156,4 @@ def post(payload, uuid, db_client):
     context = _kendra_rag(payload['question'], metadata)
     summary = _summarize(payload, context)
     _ = _write_to_db(summary, uuid, db_client)
-    logging.debug(metadata)
     return summary
