@@ -132,7 +132,7 @@ npm install i -D
 
 #### 4 - Enable Bedrock Access in your AWS Account
 
-Access Amazon Bedrock foundation models, such as Claude 3.0 Sonnet, is not granted by default. 
+Access Amazon Bedrock foundation models, such as Claude 4.5 Sonnet, is not granted by default. 
 To gain access, you must log into your AWS account and grant access inside the Bedrock service through the AWS console. 
 Additional instructions are [provided here](https://docs.aws.amazon.com/bedrock/latest/userguide/model-access.html) on how to grant a access to the account where the infrastructure in deployed in. 
 
@@ -277,7 +277,7 @@ This request is submitted through the following command line instruction:
 ```bash 
 curl -H 'content-type: application/json' \
   -H 'Authorization:<WebToken>' \
-  -d '{"question": "How does IFRS S1 help investors with sustainability reporting?", "model": "anthropic.claude-v2", "max_tokens": 300, "temperature": 0.7 }' \
+  -d '{"question": "How does IFRS S1 help investors with sustainability reporting?", "model": "global.anthropic.claude-sonnet-4-5-20250929-v1:0" }' \
   -X POST \
   <EndpointURL>/api_proxy
 ```

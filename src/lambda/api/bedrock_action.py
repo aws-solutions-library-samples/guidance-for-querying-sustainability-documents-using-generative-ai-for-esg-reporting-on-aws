@@ -51,8 +51,6 @@ def _facet(payload):
     body = json.dumps({
         'anthropic_version': 'bedrock-2023-05-31',
         'max_tokens': payload['max_tokens'],
-        'temperature': payload['temperature'],
-        'top_p': 0.5,
         'messages': [{
             'role': 'user',
             'content': [{
@@ -112,8 +110,6 @@ def _summarize(payload, rag_context):
     body = json.dumps({
         'anthropic_version': 'bedrock-2023-05-31',
         'max_tokens': 3000,
-        'temperature': 0.5,
-        'top_p': 0.5,
         'messages': [{
             'role': 'user',
             'content': [{

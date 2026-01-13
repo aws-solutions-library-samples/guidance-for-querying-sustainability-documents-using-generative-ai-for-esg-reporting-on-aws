@@ -41,15 +41,15 @@ export class KendraIndexStack extends cdk.Stack {
         kendraIndexRole.addToPolicy(
             new iam.PolicyStatement({
                 effect: iam.Effect.ALLOW,
-                resources: ['*'],  // ['arn:aws:logs:us-west-2:767398009910:log-group:/aws/kendra/*']
+                resources: ['*'], 
                 actions: [
                     'cloudwatch:PutMetricData',  // "*"
                     'logs:DescribeLogGroup',
                     'logs:DescribeLogGroups',  // "*"
-                    'logs:CreateLogGroup',  // "arn:aws:logs:us-west-2:767398009910:log-group:/aws/kendra/*"
-                    'logs:DescribeLogStreams', // "arn:aws:logs:us-west-2:767398009910:log-group:/aws/kendra/*:log-stream:*"
-                    'logs:CreateLogStream',  // "arn:aws:logs:us-west-2:767398009910:log-group:/aws/kendra/*:log-stream:*"
-                    'logs:PutLogEvents' // "arn:aws:logs:us-west-2:767398009910:log-group:/aws/kendra/*:log-stream:*"
+                    'logs:CreateLogGroup',  // 
+                    'logs:DescribeLogStreams', //
+                    'logs:CreateLogStream',  // 
+                    'logs:PutLogEvents' // 
                 ]
             })
         );
