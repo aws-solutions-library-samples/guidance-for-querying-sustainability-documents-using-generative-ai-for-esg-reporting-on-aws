@@ -15,9 +15,9 @@
   "license": "ISC",
   "devDependencies": {
     "@aws-amplify/auth": "^6.0.21",
-    "@aws-sdk/client-s3": "^3.523.0",
+    "@aws-sdk/client-s3": "^3.1027.0",
     "@types/node": "^20.11.20",
-    "aws-amplify": "^6.0.21",
+    "aws-amplify": "^6.16.3",
     "aws-cdk": "^2.130.0",
     "aws-cdk-lib": "^2.130.0",
     "cdk-nag": "^2.28.67",
