@@ -1,3 +1,6 @@
+# ⚠️ Deprecation Warning
+This repository is no longer maintained as of July 2026.
+
 # Guidance for Querying Sustainability Documents Using Generative AI for ESG Reporting on AWS
 
 - [Overview](#overview)
