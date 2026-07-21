@@ -79,10 +79,7 @@ export class LambdaAPIStack extends cdk.Stack {
                 `arn:aws:s3:::${cdk.Fn.importValue('S3AssetBucketName')}/metadata/corp-sust-reports/`,
                 `arn:aws:iam::${cdk.Fn.importValue('StackAccount')}:role/${cdk.Fn.importValue('KendraIndexRoleName')}`,
                 `arn:aws:kendra:${cdk.Fn.importValue('StackRegion')}:${cdk.Fn.importValue('StackAccount')}:index/${cdk.Fn.importValue('KendraIndexID')}`,
-                `arn:aws:bedrock:${cdk.Fn.importValue('StackRegion')}::foundation-model/anthropic.claude-v2`,
-                `arn:aws:bedrock:${cdk.Fn.importValue('StackRegion')}::foundation-model/anthropic.claude-3-sonnet-20240229-v1:0`,
-                `arn:aws:bedrock:${cdk.Fn.importValue('StackRegion')}::foundation-model/anthropic.claude-3-haiku-20240307-v1:0`,
-                `arn:aws:bedrock:${cdk.Fn.importValue('StackRegion')}::foundation-model/anthropic.claude-instant-v1`
+                `arn:aws:bedrock:${cdk.Fn.importValue('StackRegion')}::foundation-model/global.anthropic.claude-sonnet-4-5-20250929-v1:0`
             ]
         }))
 
